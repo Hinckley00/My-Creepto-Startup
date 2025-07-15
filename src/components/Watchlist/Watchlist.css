@@ -1,0 +1,63 @@
+.watchlist-page {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.watchlist-page h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+}
+
+.watchlist-coin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: background 0.3s ease;
+}
+
+.watchlist-coin:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.watchlist-coin img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.watchlist-coin span {
+  flex: 1;
+  font-weight: bold;
+}
+
+.watchlist-coin button {
+  background-color: #e74c3c;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.watchlist-coin button:hover {
+  background-color: #c0392b;
+}
+
+.watchlist-page p {
+  text-align: center;
+  font-style: italic;
+  color: #ccc;
+}

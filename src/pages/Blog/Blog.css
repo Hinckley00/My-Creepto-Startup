@@ -1,0 +1,30 @@
+.page-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.page-container h2 {
+  color: #f0c000;
+}
+
+.page-container article,
+.page-container section div {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.live-updates {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.live-updates li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+}

@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px 25px;
+  border-radius: 15px;
+  width: 320px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.options a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.register-text a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding-right: 35px;
+  font-family: inherit; /* Prevent font flicker */
+  font-size: 1rem;
+  appearance: none; /* Prevent platform-specific styles */
+}
+
+
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
+}

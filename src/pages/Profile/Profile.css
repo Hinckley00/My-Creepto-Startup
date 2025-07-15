@@ -1,0 +1,22 @@
+.profile-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.profile-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-section {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
