@@ -2,11 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { CoinContext } from "../../context/CoinContext";
 import { Link } from "react-router-dom";
+import { db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const Home = () => {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState([]);
   const [input, setInput] = useState("");
+  const { user } = useAuth();
 
   const words = [
     { text: "Largest", color: "#ffb703" },
@@ -41,6 +45,32 @@ const Home = () => {
   useEffect(() => {
     setDisplayCoin(allCoin);
   }, [allCoin]);
+
+  const saveToWatchlist = async (coin) => {
+    if (!user) {
+      alert("Please log in to save coins to your watchlist.");
+      return;
+    }
+    const coinRef = doc(db, "watchlists", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: {
+            [coin.id]: {
+              name: coin.name,
+              symbol: coin.symbol,
+              image: coin.image,
+            },
+          },
+        },
+        { merge: true }
+      );
+      alert("✅ Added to Watchlist!");
+    } catch (error) {
+      console.error("Error adding to watchlist:", error);
+    }
+  };
 
   return (
     <div className="home">

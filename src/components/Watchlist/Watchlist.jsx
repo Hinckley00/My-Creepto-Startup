@@ -35,22 +35,24 @@ const Watchlist = () => {
   };
 
   return (
-    <div className="watchlist-page">
-      <h1>Your Watchlist</h1>
+    <div className="watchlist-bg">
+      <div className="watchlist-page">
+        <h1>Your Watchlist</h1>
 
-      {Object.keys(coins).length === 0 ? (
-        <p>No coins saved yet.</p>
-      ) : (
-        Object.entries(coins).map(([id, coin]) => (
-          <div key={id} className="watchlist-coin">
-            <img src={coin.image} alt={coin.name} width="30" />
-            <span>
-              {coin.name} ({coin.symbol.toUpperCase()})
-            </span>
-            <button onClick={() => removeCoin(id)}>Remove</button>
-          </div>
-        ))
-      )}
+        {Object.keys(coins).length === 0 ? (
+          <p>No coins saved yet.</p>
+        ) : (
+          Object.entries(coins).map(([id, coin]) => (
+            <div key={id} className="watchlist-coin">
+              <img src={coin.image} alt={coin.name} width="30" />
+              <span>
+                {coin.name} ({coin.symbol.toUpperCase()})
+              </span>
+              <button onClick={() => removeCoin(id)}>Remove</button>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

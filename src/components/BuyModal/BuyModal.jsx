@@ -1,8 +1,9 @@
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { db } from "../../firebase";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { useAuth } from "../../context/AuthContext";
+import { CoinContext } from "../../context/CoinContext";
 import "./BuyModal.css";
 
 Modal.setAppElement("#root");
@@ -10,33 +11,38 @@ Modal.setAppElement("#root");
 const BuyModal = ({ isOpen, onRequestClose, coin }) => {
   const [amount, setAmount] = useState("");
   const { user } = useAuth();
+  const { currency } = useContext(CoinContext);
 
   const handleBuy = async () => {
     if (!user) {
       alert("Please log in to buy coins.");
       return;
     }
-
+    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+      alert("Please enter a valid amount.");
+      return;
+    }
     const transaction = {
       coinId: coin.id,
-      name: coin.name,
-      symbol: coin.symbol,
-      priceAtPurchase: coin.current_price,
+      coinName: coin.name,
+      coinSymbol: coin.symbol,
+      price: coin.current_price,
       amount: Number(amount),
       total: Number(amount) * coin.current_price,
-      date: new Date().toISOString(),
-      currency: "usd",
+      timestamp: Date.now(),
+      currency: currency?.symbol || "USD",
     };
-
     try {
       const txRef = doc(db, "transactions", user.uid);
+      // Ensure the document exists before using arrayUnion
+      await setDoc(txRef, { history: [] }, { merge: true });
       await updateDoc(txRef, {
-        records: arrayUnion(transaction),
+        history: arrayUnion(transaction),
       });
-      alert("✅ Fake purchase recorded!");
       onRequestClose();
     } catch (err) {
       console.error("Error recording transaction:", err);
+      alert("Error recording transaction.");
     }
   };
 
@@ -46,27 +52,26 @@ const BuyModal = ({ isOpen, onRequestClose, coin }) => {
       onRequestClose={onRequestClose}
       contentLabel="Buy Coin"
       style={{
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-    zIndex: 9999,
-  },
-  content: {
-    background: "linear-gradient(#0b004e, #1d152f, #002834)",
-    padding: "30px",
-    borderRadius: "15px",
-    width: "400px",
-    maxWidth: "90vw",
-    margin: "auto",
-    color: "white",
-    boxShadow: "0 0 15px rgba(0,0,0,0.4)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",      
-    justifyContent: "center",  
-    height: "fit-content",    
-  },
-}}
-
+        overlay: {
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          zIndex: 9999,
+        },
+        content: {
+          background: "linear-gradient(#0b004e, #1d152f, #002834)",
+          padding: "30px",
+          borderRadius: "15px",
+          width: "400px",
+          maxWidth: "90vw",
+          margin: "auto",
+          color: "white",
+          boxShadow: "0 0 15px rgba(0,0,0,0.4)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "fit-content",
+        },
+      }}
     >
       <h2 style={{ marginBottom: "20px", textAlign: "center" }}>
         Buy {coin.name}

@@ -17,6 +17,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import Watchlist from "./components/Watchlist/Watchlist.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import TransactionHistory from "./pages/Transactions/TransactionHistory.jsx";
 
 Modal.setAppElement("#root");
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/coin/:coinId",
         element: <Coin />,
+      },
+      {
+        path: "/transactions",
+        element: <TransactionHistory />,
       },
       {
         path: "/login",
