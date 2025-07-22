@@ -106,6 +106,21 @@
   gap: 18px;
 }
 
+.active-link li {
+  position: relative;
+}
+.active-link li::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: #00e0ff;
+  border-radius: 2px;
+}
+
 @keyframes navbar-slide-down {
   0% {
     transform: translateY(-100%);
@@ -180,5 +195,12 @@
   }
   .navbar .nav-actions {
     gap: 10px;
+  }
+  .active-link li::after {
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+    height: 2px;
+    background: #00e0ff;
   }
 }

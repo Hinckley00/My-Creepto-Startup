@@ -4,7 +4,7 @@ import arrow_icon from "../../assets/arrow_icon.png";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useContext } from "react";
 import { CoinContext } from "../../context/CoinContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
@@ -52,24 +52,49 @@ const Navbar = () => {
           <img src={newlogo} alt="logo" className="logo" />
         </Link>
         <ul className={menuOpen ? "open" : ""}>
-          <Link to={"/"} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Home</li>
-          </Link>
-          <Link to={"/features"} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink
+            to="/features"
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Features</li>
-          </Link>
-          <Link to={"/pricing"} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink
+            to="/pricing"
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Pricing</li>
-          </Link>
-          <Link to={"/blog"} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Blog</li>
-          </Link>
-          <Link to={"/watchlist"} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink
+            to="/watchlist"
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Watchlist</li>
-          </Link>
-          <Link to={"/transactions"} onClick={() => setMenuOpen(false)}>
+          </NavLink>
+          <NavLink
+            to="/transactions"
+            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            onClick={() => setMenuOpen(false)}
+          >
             <li>Transaction History</li>
-          </Link>
+          </NavLink>
         </ul>
         <div className="nav-actions">
           <div className="nav-right">
