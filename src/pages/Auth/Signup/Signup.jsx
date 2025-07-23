@@ -6,7 +6,7 @@ import {
   sendEmailVerification,
   reload,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const getProviderLink = (email) => {
   if (!email || typeof email !== "string" || !email.includes("@")) return null;
@@ -151,7 +151,7 @@ const Signup = () => {
           Create Account
         </button>
         <p className="register-text">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>
